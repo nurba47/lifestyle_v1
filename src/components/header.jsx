@@ -1,13 +1,9 @@
 import React from 'react'
-import { observable, action } from 'mobx';
+import { action } from 'mobx';
 import {observer} from 'mobx-react'
-import LoginForm from './login_form';
 
 @observer
 class Header extends React.Component {
-
-    @observable
-    isLoginFormOpen = false
 
     render() {
         return(
@@ -25,11 +21,10 @@ class Header extends React.Component {
                             <li className="nav-item"><a href="/documents" className="nav-link" >Документы</a></li>
                             <li className="nav-item"><a href="/marketing" className="nav-link">Маркетинг план</a></li>
                             <li className="nav-item"><a href="/about" className="nav-link">О проекте</a></li>
-                            <li className="nav-item cta"><a href="!#" className="nav-link" onClick={this.onLoginFormShow} data-toggle="modal" data-target="#login_form"><span>Личный Кабинет</span></a></li>
+                            <li className="nav-item cta"><a href="/login" className="nav-link"><span>Личный Кабинет</span></a></li>
                         </ul>
                     </div>
                 </div>
-                {this.isLoginFormOpen && <LoginForm onClose={this.onLoginFormShow} />}
             </nav>
         )
     }

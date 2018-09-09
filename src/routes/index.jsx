@@ -14,6 +14,9 @@ import TonbanProduct from '../components/tonban';
 import AngusProduct from '../components/angus';
 import BearProduct from '../components/bear';
 import ExtractProduct from '../components/extract';
+import LoginScene from '../scenes/login_scene';
+import RegisterScene from '../scenes/register_scene';
+import Profile from '../scenes/profile';
 
 const DefaultRoutes = () => (
      <Router>
@@ -30,6 +33,10 @@ const DefaultRoutes = () => (
             <Route exact path="/angus" component={AngusProduct} />  
             <Route exact path="/bear" component={BearProduct} />            
             <Route exact path="/extract" component={ExtractProduct} />           
+
+            <Route exact path="/login" component={LoginScene} />
+            <Route exact path="/registration" component={RegisterScene} />
+            <Route exact path="/profile" component={Profile} />
 
          </Switch>
      </Router>

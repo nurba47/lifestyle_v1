@@ -6,11 +6,11 @@ import Footer from './components/footer';
 class App extends React.Component {
   render() {
     return (
-          <div>
-            <Header />
-            <DefaultRoutes />
-            <Footer />
-          </div>
+      <div>
+        <Header />
+        <DefaultRoutes />
+        <Footer />
+      </div>          
     );
   }
 }
