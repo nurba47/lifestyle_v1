@@ -15,7 +15,7 @@ class Profile {
 
   @action.bound
   async getReferrals() {
-    let { user } = auth.profile;
+    let { user } = auth.user;
     if (user) {
       let response = await getReferrals(user.token);
       return response.children;

@@ -7,7 +7,7 @@ import {NavLink} from "react-router-dom"
 class Header extends React.Component {
   
   render() {
-    let { profile, logout } = this.props.authCtrl;
+    let { user, logout } = this.props.authCtrl;
     return (
       <nav
         className="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -63,7 +63,7 @@ class Header extends React.Component {
                   <span>Личный Кабинет</span>
                 </NavLink>
               </li>
-              {profile && (
+              {user && (
                 <li className="nav-item cta">
                   <NavLink to="/" className="nav-link" onClick={logout}>
                     <span>Выйти</span>

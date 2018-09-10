@@ -7,8 +7,8 @@ import { Redirect } from "react-router-dom";
 @inject("authCtrl")
 class LoginScene extends React.Component {
   render() {
-    let { profile } = this.props.authCtrl;
-    if (profile) {
+    let { user } = this.props.authCtrl;
+    if (user) {
       return <Redirect to="/profile" />;
     }
     

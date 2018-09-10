@@ -10,8 +10,8 @@ const instance = axios.create({
 });
 
 instance.interceptors.request.use(function(config) {
-  let { profile } = authCtrl;
-  if (profile && profile.user) config.headers.Authorization = `Token ${profile.user.token}`;
+  let { user } = authCtrl;
+  if (user) config.headers.Authorization = `Token ${user.token}`;
   return config;
 });
 

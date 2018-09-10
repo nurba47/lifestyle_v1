@@ -4,16 +4,15 @@ import {register, login} from "../api/auth"
 class Auth {
   PROFILE = "profile";
 
-  @observable profile;
+  @observable user;
   @observable ready;
 
   loadProfile() {
     let profile = window.localStorage.getItem(this.PROFILE);
     profile = JSON.parse(profile);
     
-    if (profile && profile.user) this.profile = profile;
-    else this.profile = null;
-
+    if (profile && profile.user) this.user = profile.user;
+    else this.user = null;
     this.ready = true;
   }
 
@@ -54,7 +53,7 @@ class Auth {
   @action.bound
   logout() {
     window.localStorage.removeItem(this.PROFILE);
-    this.profile = null;
+    this.user = null;
   }
 }
 
