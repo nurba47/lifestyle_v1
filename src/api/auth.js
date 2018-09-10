@@ -1,15 +1,10 @@
-import { post, get } from "./index";
-import { LOGIN, USERS, TREE } from "../pathes";
+import { post } from "./index";
+import { LOGIN, USERS } from "../pathes";
 
 export const register = user => {
-  return post(USERS, JSON.stringify({ user }));
+  return post(USERS, user);
 };
 
 export const login = user => {
-  return post(LOGIN, JSON.stringify({ user }));
-};
-
-export const getReferrals = token => {
-  // TODO: COMPLETE THIS
-  return get(TREE);
+  return post(LOGIN, { user });
 };

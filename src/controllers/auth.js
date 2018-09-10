@@ -21,13 +21,9 @@ class Auth {
   async login(user) {
     try {
       const response = await login(user);
-      if (!response.ok) {
-        return Promise.reject();
-      }
-
-      let data = await response.json();
-      window.localStorage.setItem(this.PROFILE, JSON.stringify(data));
-
+      
+      window.localStorage.setItem(this.PROFILE, JSON.stringify({user: response.user}));
+      
       this.loadProfile();
 
       return Promise.resolve();
@@ -42,12 +38,8 @@ class Auth {
   async register(user) {
     try {
       const response = await register(user)
-      if (!response.ok) {
-        return Promise.reject();
-      }
 
-      let data = await response.json();
-      window.localStorage.setItem(this.PROFILE, JSON.stringify(data));
+      window.localStorage.setItem(this.PROFILE, JSON.stringify({user: response.user}));
 
       this.loadProfile();
 

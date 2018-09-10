@@ -1,20 +1,51 @@
-let headers = new Headers();
-headers.append("Accept", "application/json");
-headers.append("Content-Type", "application/json");
+import axios from "axios";
+import authCtrl from "../controllers/auth";
+import { BASE } from "../pathes";
 
-let init = {
-  headers: headers
-};
+const instance = axios.create({
+  baseURL: BASE,
+  timeout: 30000,
+  responseType: "json",
+  headers: {}
+});
 
-export const post = (url, data) => {
-  init.method = "POST";
-  init.body = data;
-  return fetch(url, init);
-};
+instance.interceptors.request.use(function(config) {
+  let { profile } = authCtrl;
+  if (profile && profile.user) config.headers.Authorization = `Token ${profile.user.token}`;
+  return config;
+});
 
-export const get = (url, data) => {
-  init.method = "GET";
-  init.body = data;
+export function get(url, param) {
+  return new Promise(function(resolve, reject) {
+    instance
+      .get(url, { params: param })
+      .then(resp => {
+        if (resp && resp.data) {
+          resolve(resp.data);
+        } else {
+          reject(null);
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
 
-  return fetch(url, init);
-};
+export function post(url, param, silent) {
+  param = param || {};
+  return new Promise(function(resolve, reject) {
+    instance
+      .post(url, param)
+      .then(resp => {
+        if (resp && resp.data) {
+          resolve(resp.data);
+        } else {
+          reject(null);
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
