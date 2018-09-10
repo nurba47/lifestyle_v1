@@ -1,5 +1,5 @@
 import { observable, action } from "mobx";
-import { LOGIN, USERS } from "../pathes";
+import {register, login} from "../api/auth"
 
 class Auth {
   PROFILE = "profile";
@@ -20,14 +20,7 @@ class Auth {
   @action.bound
   async login(user) {
     try {
-      const response = await fetch(LOGIN, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ user })
-      });
+      const response = await login(user);
       if (!response.ok) {
         return Promise.reject();
       }
@@ -48,20 +41,13 @@ class Auth {
   @action.bound
   async register(user) {
     try {
-      const rawResponse = await fetch(USERS, {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ user })
-      });
-      if (!rawResponse.ok) {
+      const response = await register(user)
+      if (!response.ok) {
         return Promise.reject();
       }
 
-      const storage = window.localStorage;
-      storage.setItem(this.PROFILE, JSON.stringify(rawResponse));
+      let data = await response.json();
+      window.localStorage.setItem(this.PROFILE, JSON.stringify(data));
 
       this.loadProfile();
 

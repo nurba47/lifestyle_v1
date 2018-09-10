@@ -98,7 +98,7 @@ class RegisterForm extends React.Component {
   onFormSubmit = async event => {
     event.preventDefault();
     this.props.authCtrl
-      .register()
+      .register(this.state)
       .then(() => this.props.history.replace("/"))
       .catch(error => console.log(error));
   };
