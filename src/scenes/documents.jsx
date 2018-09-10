@@ -6,7 +6,7 @@ import document3 from '../images/document3.jpg'
 export default class DocumentScene extends React.Component {
     render() {
         return(
-            <div style={{ backgroundColor: '#fff'}}>
+            <div style={{ backgroundColor: '#a7ffeb'}}>
                 <div>
                     <div class="img-thumbnail" style={{ padding: "50px 0" }}>
                         <a href={document1} class="swipebox" >
