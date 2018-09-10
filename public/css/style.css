@@ -9496,3 +9496,35 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+ #wrapper {
+     margin: 15px;
+ }
+.tab-pane {
+    margin-top: 15px;
+}
+.alert {
+    margin: 15px 0;
+}
+.table td {
+    width: 14.28571%;
+    padding: 0 !important;
+    border-top: 0 !important;
+}
+.table div {
+    padding: 7px 10px;
+    border: 2px solid #337AB7 !important;
+    border-radius: 5px;
+    background: #5B9BD5;
+    text-align: center;
+    color: #fff;
+}
+.table a {
+    color: #FFF;
+}
+.option {
+    text-align: left;
+    border: #3fc3e8;
+    border-bottom: #1e7e34;
+    right: 100px;
+}
