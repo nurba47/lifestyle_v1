@@ -11,7 +11,6 @@ class Profile extends React.Component {
     if (!profile) {
       return <Redirect to="/login" />;
     }
-
     return (
       <div>
         <div className="card" style={{ padding: "20px 15px" }}>
@@ -23,10 +22,10 @@ class Profile extends React.Component {
           />
           <div className="card-body">
             <h5 className="card-title">
-              Пользователь: {this.profile ? this.profile.user.email : "User"}
+              Пользователь: {profile ? profile.user.email : "User"}
             </h5>
             <h5 className="card-text">
-              Реферальный код: {this.profile ? this.profile.user.referralCode : 0}
+              Реферальный код: {profile ? profile.user.referralCode : 0}
             </h5>
           </div>
         </div>

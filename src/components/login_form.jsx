@@ -1,7 +1,8 @@
 import React from "react";
 import { inject } from "mobx-react";
+import { NavLink, withRouter } from "react-router-dom";
 
-@inject("authCtrl")
+@withRouter @inject("authCtrl") 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -12,8 +13,6 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    let { onFormSubmit } = this.props.authCtrl;
-
     return (
       <div className="container-fluid">
         <form
@@ -54,13 +53,13 @@ class LoginForm extends React.Component {
               type="button"
               className="btn btn-primary"
               style={{ borderRadius: "8px", marginRight: "15px" }}
-              onClick={onFormSubmit}
+              onClick={this.onFormSubmit}
             >
               Войти
             </button>
-            <a href="/registration" className="btn btn-primary" style={{ borderRadius: "8px" }}>
+            <NavLink to="/registration" className="btn btn-primary" style={{ borderRadius: "8px" }}>
               Регистрация
-            </a>
+            </NavLink>
           </div>
         </form>
       </div>
@@ -70,8 +69,16 @@ class LoginForm extends React.Component {
   handleEmailChange = e => {
     this.setState({ email: e.target.value });
   };
+
   handlePasswordChange = e => {
     this.setState({ password: e.target.value });
+  };
+
+  onFormSubmit = () => {
+    this.props.authCtrl
+      .login(this.state)
+      .then(() => this.props.history.replace("/"))
+      .catch(error => console.log(error));
   };
 }
 

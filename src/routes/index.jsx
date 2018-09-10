@@ -1,5 +1,4 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Switch } from "react-router";
 
 import DefaultScene from "../scenes/landing";
@@ -19,7 +18,6 @@ import RegisterScene from "../scenes/register_scene";
 import Profile from "../scenes/profile";
 
 const DefaultRoutes = () => (
-  <Router>
     <Switch>
       <Route exact path="/" component={DefaultScene} />
       <Route exact path="/about_products" component={ProductLanding} />
@@ -38,7 +36,6 @@ const DefaultRoutes = () => (
       <Route exact path="/registration" component={RegisterScene} />
       <Route exact path="/profile" component={Profile} />
     </Switch>
-  </Router>
 );
 
 export default DefaultRoutes;
