@@ -13,11 +13,26 @@ class Profile {
   async load() {
     if (!this.ready) {
       let [referrals] = await Promise.all([this.getReferrals()]);
+      referrals = this.modifyTree(referrals);
 
-      let children = referrals.map(r => ({ title: r.email }));
-      this.referrals = [{ title: authCtrl.user.email, children }];
+      this.referrals = [{ title: authCtrl.user.email, children: referrals }];
       this.ready = true;
     }
+  }
+
+  modifyTree(treeLike) {
+    let stack = [...treeLike];
+
+    while (stack.length > 0) {
+      var currentNode = stack.pop();
+      currentNode.title = currentNode.email;
+      delete currentNode.email;
+
+      var grandChildren = this.modifyTree(currentNode.children);
+      currentNode.children = grandChildren;
+    }
+
+    return treeLike;
   }
 
   @action
