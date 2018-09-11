@@ -7,11 +7,12 @@ import { inject, observer } from "mobx-react";
 @observer
 export default class RewardsTable extends Component {
   render() {
-    let { rewards, onNewRewardAdd, onRowValueChange } = this.props.profileCtrl;
+    let { rewards, onNewRewardAdd, onRowValueChange, computedResult } = this.props.profileCtrl;
     if (!rewards.length) onNewRewardAdd();
     return (
       <div>
         <h3 style={{ padding: "20px" }}>Список вознаграждений</h3>
+        <h5>{computedResult}</h5>
         <Table responsive striped bordered condensed>
           <thead style={{ textAlign: "center" }}>
             <tr>

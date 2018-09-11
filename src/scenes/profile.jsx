@@ -10,10 +10,10 @@ import RewardsTable from "../components/RewardsTable";
 @inject("authCtrl", "profileCtrl")
 @observer
 class Profile extends React.Component {
-  componentDidMount = () => {
+  componentDidMount() {
     let { user } = this.props.authCtrl;
     if (user) this.props.profileCtrl.load();
-  };
+  }
 
   componentWillUnmount() {
     this.props.profileCtrl.reset();

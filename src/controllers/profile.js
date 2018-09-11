@@ -1,6 +1,6 @@
 import { getReferrals } from "../api/profile";
 import authCtrl from "./auth";
-import { observable, action } from "mobx";
+import { observable, action, computed } from "mobx";
 
 class Profile {
   @observable
@@ -69,6 +69,14 @@ class Profile {
   @action.bound
   onRowValueChange(index, field, value) {
     this.rewards[index][field] = value;
+  }
+
+  @computed
+  get computedResult() {
+    let result = this.rewards.reduce((total, { income, withdrow }) => {
+      return total + (income - withdrow);
+    }, 0);
+    return result;
   }
 }
 
