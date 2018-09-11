@@ -9528,3 +9528,7 @@ textarea.form-control {
     border-bottom: #1e7e34;
     right: 100px;
 }
+.text-about {
+    text-align: right;
+    font-size: 19px;
+}
