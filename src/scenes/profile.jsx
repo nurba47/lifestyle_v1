@@ -4,6 +4,7 @@ import { Redirect } from "react-router";
 import { inject, observer } from "mobx-react";
 import Tree from "../components/Tree";
 import { toJS } from "mobx";
+import { Row, Col } from "react-bootstrap";
 
 @inject("authCtrl", "profileCtrl")
 @observer
@@ -23,15 +24,16 @@ class Profile extends React.Component {
     if (!ready) return null;
 
     return (
-      <div>
-        <div className="card" style={{ padding: "20px 15px" }}>
-          <img
-            className="card-img-top"
-            style={{ marginLeft: "20px", width: "100px" }}
-            src={avatar}
-            alt=""
-          />
-          <div className="card-body">
+      <div className="card" style={{ padding: "20px 15px" }}>
+        <Row>
+          <Col md={6}>
+            <img
+              className="card-img-top"
+              style={{ marginLeft: "20px", width: "100px" }}
+              src={avatar}
+              alt=""
+            />
+
             <h5 className="card-title">Пользователь: {user ? user.email : "User"}</h5>
             <h5 className="card-text">Реферальный код: {user ? user.referralCode : 0}</h5>
             <select className="option">
@@ -69,9 +71,11 @@ class Profile extends React.Component {
                 <td>34</td>
               </tr>
             </table>
-          </div>
-        </div>
-        <Tree data={toJS(referrals)} onChange={onReferralsChange} />
+          </Col>
+          <Col md={6}>
+            <Tree data={toJS(referrals)} onChange={onReferralsChange} />
+          </Col>
+        </Row>
       </div>
     );
   }
