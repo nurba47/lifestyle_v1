@@ -2,11 +2,15 @@ import React from "react";
 import avatar from "../images/user.png";
 import { Redirect } from "react-router";
 import { inject, observer } from "mobx-react";
+import Tree from "../components/Tree";
+import { toJS } from "mobx";
 
-@inject("authCtrl", "profileCtrl") @observer
+@inject("authCtrl", "profileCtrl")
+@observer
 class Profile extends React.Component {
   componentDidMount = () => {
-    this.props.profileCtrl.load();
+    let { user } = this.props.authCtrl;
+    if (user) this.props.profileCtrl.load();
   };
 
   render() {
@@ -15,10 +19,8 @@ class Profile extends React.Component {
       return <Redirect to="/login" />;
     }
 
-    let { ready, referrals } = this.props.profileCtrl;
+    let { ready, referrals, onReferralsChange } = this.props.profileCtrl;
     if (!ready) return null;
-
-    console.log("REFERRALS", referrals);
 
     return (
       <div>
@@ -32,65 +34,6 @@ class Profile extends React.Component {
           <div className="card-body">
             <h5 className="card-title">Пользователь: {user ? user.email : "User"}</h5>
             <h5 className="card-text">Реферальный код: {user ? user.referralCode : 0}</h5>
-            <div className="table-responsive">
-              <table className="table">
-                <tr>
-                  <td />
-                  <td />
-                  <td />
-                  <td className="user">
-                    <div>
-                      <strong>{user.email}</strong>
-                    </div>
-                  </td>
-                  <td />
-                  <td />
-                  <td />
-                </tr>
-                <tr>
-                  <td />
-                  <td className="user">
-                    <div>
-                      <strong>new profill</strong>
-                    </div>
-                  </td>
-                  <td />
-                  <td />
-                  <td />
-                  <td className="user">
-                    <div>
-                      <strong>new profil</strong>
-                    </div>
-                  </td>
-                  <td />
-                </tr>
-                <tr>
-                  <td className="user">
-                    <div>
-                      <strong>new profil</strong>
-                    </div>
-                  </td>
-                  <td />
-                  <td>
-                    <div>
-                      <strong> new profil</strong>
-                    </div>
-                  </td>
-                  <td />
-                  <td className="user">
-                    <div>
-                      <strong>new profill</strong>
-                    </div>
-                  </td>
-                  <td />
-                  <td>
-                    <div>
-                      <strong>new profil</strong>
-                    </div>
-                  </td>
-                </tr>
-              </table>
-            </div>
             <select className="option">
               <option>100 - Льгота</option>
               <option>250 - Льгота</option>
@@ -128,6 +71,7 @@ class Profile extends React.Component {
             </table>
           </div>
         </div>
+        <Tree data={toJS(referrals)} onChange={onReferralsChange} />
       </div>
     );
   }

@@ -1,26 +1,44 @@
 import { getReferrals } from "../api/profile";
-import auth from "./auth";
+import authCtrl from "./auth";
 import { observable, action } from "mobx";
 
 class Profile {
-  @observable referrals = [];
-  @observable ready = false;
+  @observable
+  referrals;
 
+  @observable
+  ready = false;
+
+  @action
   async load() {
-    let [referrals] = await Promise.all([getReferrals()]);
+    if (!this.ready) {
+      let [referrals] = await Promise.all([this.getReferrals()]);
 
-    this.referrals = referrals;
+      let children = referrals.map(r => ({ title: r.email }));
+      this.referrals = [{ title: authCtrl.user.email, children }];
+      this.ready = true;
+    }
+  }
+
+  @action
+  reset() {
+    this.referrals = null;
     this.ready = true;
   }
 
   @action.bound
   async getReferrals() {
-    let { user } = auth.user;
+    let { user } = authCtrl;
     if (user) {
       let response = await getReferrals(user.token);
       return response.children;
     }
     return Promise.reject();
+  }
+
+  @action.bound
+  onReferralsChange(referrals) {
+    this.referrals = referrals;
   }
 }
 
