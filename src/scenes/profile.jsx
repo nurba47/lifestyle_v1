@@ -5,6 +5,7 @@ import { inject, observer } from "mobx-react";
 import Tree from "../components/Tree";
 import { toJS } from "mobx";
 import { Row, Col } from "react-bootstrap";
+import RewardsTable from "../components/RewardsTable";
 
 @inject("authCtrl", "profileCtrl")
 @observer
@@ -13,6 +14,10 @@ class Profile extends React.Component {
     let { user } = this.props.authCtrl;
     if (user) this.props.profileCtrl.load();
   };
+
+  componentWillUnmount() {
+    this.props.profileCtrl.reset();
+  }
 
   render() {
     let { user } = this.props.authCtrl;
@@ -41,36 +46,7 @@ class Profile extends React.Component {
               <option>250 - Льгота</option>
               <option>400 - Льгота</option>
             </select>
-            <table border="1" cellPadding="8" cellSpacing="0">
-              <caption>Список вознаграждений</caption>
-              <tr>
-                <th colSpan="5" bgcolor="#7fffd4" align="left">
-                  Дата
-                </th>
-                <th>Поступления</th>
-                <th>Снял</th>
-              </tr>
-              <tr onInput={1}>
-                <td colSpan="5">10.10.2018</td>
-                <td>44</td>
-                <td>66</td>
-              </tr>
-              <tr>
-                <td colSpan="5">10.10.2018</td>
-                <td>45</td>
-                <td>55</td>
-              </tr>
-              <tr>
-                <td colSpan="5">10.10.2018</td>
-                <td>33</td>
-                <td>22</td>
-              </tr>
-              <tr>
-                <td colSpan="5">10.10.2018</td>
-                <td>44</td>
-                <td>34</td>
-              </tr>
-            </table>
+            <RewardsTable />
           </Col>
           <Col md={6}>
             <Tree data={toJS(referrals)} onChange={onReferralsChange} />

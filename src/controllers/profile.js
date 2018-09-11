@@ -9,6 +9,9 @@ class Profile {
   @observable
   ready = false;
 
+  @observable
+  rewards;
+
   @action
   async load() {
     if (!this.ready) {
@@ -16,8 +19,16 @@ class Profile {
       referrals = this.modifyTree(referrals);
 
       this.referrals = [{ title: authCtrl.user.email, children: referrals }];
+      this.rewards = [];
       this.ready = true;
     }
+  }
+
+  @action
+  reset() {
+    this.referrals = null;
+    this.rewards = null;
+    this.ready = false;
   }
 
   modifyTree(treeLike) {
@@ -35,12 +46,6 @@ class Profile {
     return treeLike;
   }
 
-  @action
-  reset() {
-    this.referrals = null;
-    this.ready = true;
-  }
-
   @action.bound
   async getReferrals() {
     let { user } = authCtrl;
@@ -54,6 +59,16 @@ class Profile {
   @action.bound
   onReferralsChange(referrals) {
     this.referrals = referrals;
+  }
+
+  @action.bound
+  onNewRewardAdd() {
+    this.rewards.push({ date: new Date().toString(), income: 0, withdrow: 0 });
+  }
+
+  @action.bound
+  onRowValueChange(index, field, value) {
+    this.rewards[index][field] = value;
   }
 }
 
