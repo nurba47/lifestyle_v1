@@ -7,7 +7,7 @@ const styles = {
   textAlign: "center"
 };
 
-const TableRow = ({ date, income, withdrow, readOnly, index, onRowChange }) => {
+const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange }) => {
   return (
     <tr>
       <td>
@@ -35,8 +35,8 @@ const TableRow = ({ date, income, withdrow, readOnly, index, onRowChange }) => {
           type="number"
           style={styles}
           readOnly={readOnly}
-          value={withdrow}
-          onChange={event => onRowChange(index, "withdrow", event.target.value)}
+          value={withdraw}
+          onChange={event => onRowChange(index, "withdraw", event.target.value)}
         />
       </td>
     </tr>

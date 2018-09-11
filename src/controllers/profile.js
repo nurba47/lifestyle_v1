@@ -1,6 +1,6 @@
 import { getReferrals } from "../api/profile";
 import authCtrl from "./auth";
-import { observable, action, computed } from "mobx";
+import { observable, action } from "mobx";
 
 class Profile {
   @observable
@@ -9,17 +9,13 @@ class Profile {
   @observable
   ready = false;
 
-  @observable
-  rewards;
-
   @action
   async load() {
-    if (!this.ready) {
-      let [referrals] = await Promise.all([this.getReferrals()]);
+    if (!this.ready && authCtrl.user) {
+      let referrals = await this.getReferrals();
       referrals = this.modifyTree(referrals);
 
       this.referrals = [{ title: authCtrl.user.email, children: referrals }];
-      this.rewards = [];
       this.ready = true;
     }
   }
@@ -27,7 +23,6 @@ class Profile {
   @action
   reset() {
     this.referrals = null;
-    this.rewards = null;
     this.ready = false;
   }
 
@@ -50,7 +45,7 @@ class Profile {
   async getReferrals() {
     let { user } = authCtrl;
     if (user) {
-      let response = await getReferrals(user.token);
+      let response = await getReferrals();
       return response.children;
     }
     return Promise.reject();
@@ -59,24 +54,6 @@ class Profile {
   @action.bound
   onReferralsChange(referrals) {
     this.referrals = referrals;
-  }
-
-  @action.bound
-  onNewRewardAdd() {
-    this.rewards.push({ date: new Date().toString(), income: 0, withdrow: 0 });
-  }
-
-  @action.bound
-  onRowValueChange(index, field, value) {
-    this.rewards[index][field] = value;
-  }
-
-  @computed
-  get computedResult() {
-    let result = this.rewards.reduce((total, { income, withdrow }) => {
-      return total + (income - withdrow);
-    }, 0);
-    return result;
   }
 }
 

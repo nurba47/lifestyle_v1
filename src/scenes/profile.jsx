@@ -3,7 +3,6 @@ import avatar from "../images/user.png";
 import { Redirect } from "react-router";
 import { inject, observer } from "mobx-react";
 import Tree from "../components/Tree";
-import { toJS } from "mobx";
 import { Row, Col } from "react-bootstrap";
 import RewardsTable from "../components/RewardsTable";
 
@@ -11,8 +10,7 @@ import RewardsTable from "../components/RewardsTable";
 @observer
 class Profile extends React.Component {
   componentDidMount() {
-    let { user } = this.props.authCtrl;
-    if (user) this.props.profileCtrl.load();
+    this.props.profileCtrl.load();
   }
 
   componentWillUnmount() {
@@ -49,7 +47,7 @@ class Profile extends React.Component {
             <RewardsTable />
           </Col>
           <Col md={6}>
-            <Tree data={toJS(referrals)} onChange={onReferralsChange} />
+            <Tree data={referrals} onChange={onReferralsChange} />
           </Col>
         </Row>
       </div>
