@@ -16,7 +16,7 @@ class Profile {
       referrals = this.modifyTree(referrals);
 
       this.referrals = [{ title: authCtrl.user.email, children: referrals }];
-      this.ready = true;
+      // this.ready = true;
     }
   }
 

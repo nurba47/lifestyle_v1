@@ -24,8 +24,8 @@ class Profile extends React.Component {
       return <Redirect to="/login" />;
     }
 
-    let { ready, referrals, onReferralsChange } = this.props.profileCtrl;
-    if (!ready) return null;
+    let { referrals, onReferralsChange } = this.props.profileCtrl;
+    // if (!ready) return null;
 
     return (
       <div className="card" style={{ padding: "20px 15px" }}>
@@ -50,7 +50,7 @@ class Profile extends React.Component {
             {!user.isAdmin && <RewardsTable />}
           </Col>
           <Col md={6}>
-            <Tree data={referrals} onChange={onReferralsChange} />
+            {referrals && <Tree data={referrals} onChange={onReferralsChange} />}
           </Col>
         </Row>
       </div>

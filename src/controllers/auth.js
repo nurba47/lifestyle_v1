@@ -44,7 +44,6 @@ class Auth {
   logout() {
     window.localStorage.removeItem(this.PROFILE);
     this.user = null;
-    this.ready = false;
   }
 }
 
