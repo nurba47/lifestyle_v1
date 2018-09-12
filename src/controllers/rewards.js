@@ -1,4 +1,5 @@
 import { observable, action, computed } from "mobx";
+import _ from "lodash";
 import authCtrl from "./auth";
 import * as rewardsApi from "../api/rewards";
 import { getAllUsers } from "../api/auth";
@@ -43,7 +44,10 @@ class Rewards {
     if (!this.ready && user) {
       let users = await this.getAllUsers();
       this.users = users;
+
       this.currentUserId = users[0]._id;
+      this.getRewards()
+
       this.ready = true;
     }
   }
@@ -107,13 +111,24 @@ class Rewards {
 
   @action.bound
   onCancelRewards() {
-    this.rewards = this.rewardsOriginal.slice();
+    this.rewards = this.rewardsOriginal && this.rewardsOriginal.slice() || [];
   }
 
   @action.bound
   async onSaveRewards() {
+    if (!this.validateRewards()) {
+      alert("Данные некорректны");
+      return;
+    }
     let toCreate = this.rewards.filter(r => !r._id);
-    let toUpdate = this.rewards.filter(r => r._id);
+
+    let toUpdate = this.rewards.filter(r => {
+      if (r._id) {
+        let found = this.rewardsOriginal.find(ro => ro._id === r._id);
+        return found && !_.isEqual(found, r);
+      }
+    });
+
     let toDelete = this.rewardsOriginal.reduce((deleted, ro) => {
       let found = this.rewards.find(r => r._id === ro._id);
       if (!found) {
@@ -121,7 +136,7 @@ class Rewards {
       }
       return deleted;
     }, []);
-    debugger;
+
     try {
       if (toCreate.length)
         await rewardsApi.create({ user_id: this.currentUserId, rewards: toCreate });
@@ -139,6 +154,10 @@ class Rewards {
 
   getDefReward() {
     return { date: formatDate(), income: 0, withdraw: 0 };
+  }
+
+  validateRewards() {
+    return this.rewards.every(r => r.date && r.income >= 0 && r.withdraw >= 0);
   }
 }
 
