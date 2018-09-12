@@ -5,6 +5,7 @@ import { inject, observer } from "mobx-react";
 import Tree from "../components/Tree";
 import { Row, Col } from "react-bootstrap";
 import RewardsTable from "../components/RewardsTable";
+import RewardsTableAdmin from "../components/RewardsTableAdmin";
 
 @inject("authCtrl", "profileCtrl")
 @observer
@@ -37,14 +38,16 @@ class Profile extends React.Component {
               alt=""
             />
 
-            <h5 className="card-title">Пользователь: {user ? user.email : "User"}</h5>
-            <h5 className="card-text">Реферальный код: {user ? user.referralCode : 0}</h5>
+            <h5 className="card-title">Пользователь: {user.email}</h5>
+            <h5 className="card-text">Реферальный код: {user.referralCode}</h5>
+            <h5 className="card-text">Дата регистрации: {user.registrationDate}</h5>
             <select className="option">
               <option>100 - Льгота</option>
               <option>250 - Льгота</option>
               <option>400 - Льгота</option>
             </select>
-            <RewardsTable />
+            {user.isAdmin && <RewardsTableAdmin />}
+            {!user.isAdmin && <RewardsTable />}
           </Col>
           <Col md={6}>
             <Tree data={referrals} onChange={onReferralsChange} />

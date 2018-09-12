@@ -1,5 +1,9 @@
 import * as request from "./index";
-import { REWARDS } from "../pathes";
+import { REWARDS, REWARDS_OF_USER } from "../pathes";
+
+export const getForUser = () => {
+  return request.get(`${REWARDS_OF_USER}`);
+};
 
 export const get = userId => {
   return request.get(`${REWARDS}/${userId}`);

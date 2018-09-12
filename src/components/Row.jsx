@@ -40,9 +40,11 @@ const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange, onRowR
         />
       </td>
 
-      <td style={{ textAlign: "center", width: "10%" }}>
-        <button disabled={readOnly} onClick={() => onRowRemove(index)} />
-      </td>
+      {!readOnly && (
+        <td style={{ textAlign: "center", width: "10%" }}>
+          <button onClick={() => onRowRemove(index)} />
+        </td>
+      )}
     </tr>
   );
 };

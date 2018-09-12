@@ -6,7 +6,7 @@ export default ({ users, onChange }) => {
   return (
     <FormGroup controlId="formControlsSelect">
       <ControlLabel>Выберите пользователя</ControlLabel>
-      <FormControl componentClass="select" onChange={onChange}>
+      <FormControl bsSize="sm" componentClass="select" onChange={onChange}>
         {users.map(u => (
           <option value={u._id}>{u.email}</option>
         ))}

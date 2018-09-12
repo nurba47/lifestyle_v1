@@ -22,9 +22,25 @@ class Rewards {
     this.reset();
   }
 
-  @action
+  @action // loads data for USER
   async load() {
-    if (!this.ready && authCtrl.user) {
+    let { user } = authCtrl;
+    if (!this.ready && user) {
+      let result = await rewardsApi.getForUser();
+
+      let { rewards } = result;
+      rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
+      rewards.sort((r1, r2) => r1.date < r2.date);
+
+      this.rewards = rewards;
+      this.ready = true;
+    }
+  }
+
+  @action // loads data for ADMIN
+  async loadForAdmin() {
+    let { user } = authCtrl;
+    if (!this.ready && user) {
       let users = await this.getAllUsers();
       this.users = users;
       this.ready = true;
@@ -51,9 +67,10 @@ class Rewards {
     rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
     rewards.sort((r1, r2) => r1.date < r2.date);
 
-    if (!rewards.length) rewards.push(this.getDefReward())
+    if (!rewards.length) rewards.push(this.getDefReward());
 
-    this.rewardsOriginal = this.rewards = rewards;
+    this.rewards = rewards;
+    this.rewardsOriginal = rewards.slice();
   }
 
   @action.bound

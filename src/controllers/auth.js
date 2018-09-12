@@ -1,5 +1,6 @@
 import { observable, action } from "mobx";
 import { register, login } from "../api/auth";
+import { formatDate } from "../helpers";
 
 class Auth {
   PROFILE = "profile";
@@ -22,8 +23,11 @@ class Auth {
   async login(user) {
     try {
       const response = await login(user);
+      debugger;
+      user = response.user;
+      user.registrationDate = formatDate(new Date(user.registrationDate));
 
-      window.localStorage.setItem(this.PROFILE, JSON.stringify({ user: response.user }));
+      window.localStorage.setItem(this.PROFILE, JSON.stringify({ user }));
 
       this.loadProfile();
 
@@ -39,8 +43,10 @@ class Auth {
   async register(user) {
     try {
       const response = await register(user);
+      user = response.user;
+      user.registrationDate = formatDate(new Date(user.registrationDate));
 
-      window.localStorage.setItem(this.PROFILE, JSON.stringify({ user: response.user }));
+      window.localStorage.setItem(this.PROFILE, JSON.stringify({ user }));
 
       this.loadProfile();
 
