@@ -1,6 +1,7 @@
 import * as request from "./index";
 import { REWARDS, REWARDS_OF_USER } from "../pathes";
 
+// when user makes request
 export const getForUser = () => {
   return request.get(`${REWARDS_OF_USER}`);
 };

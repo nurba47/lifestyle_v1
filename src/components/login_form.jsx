@@ -2,7 +2,7 @@ import React from "react";
 import { inject } from "mobx-react";
 import { NavLink, withRouter } from "react-router-dom";
 
-@withRouter @inject("authCtrl") 
+@withRouter @inject("authCtrl")
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -76,7 +76,7 @@ class LoginForm extends React.Component {
 
   onFormSubmit = () => {
     this.props.authCtrl
-      .login(this.state)
+      .auth(true, this.state)
       .then(() => this.props.history.replace("/"))
       .catch(error => console.log(error));
   };

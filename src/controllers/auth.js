@@ -20,10 +20,11 @@ class Auth {
   }
 
   @action.bound
-  async login(user) {
+  async auth(isLogin, user) {
     try {
-      const response = await login(user);
-      debugger;
+      let func = isLogin ? login : register;
+      const response = await func(user);
+
       user = response.user;
       user.registrationDate = formatDate(new Date(user.registrationDate));
 
@@ -40,28 +41,10 @@ class Auth {
   }
 
   @action.bound
-  async register(user) {
-    try {
-      const response = await register(user);
-      user = response.user;
-      user.registrationDate = formatDate(new Date(user.registrationDate));
-
-      window.localStorage.setItem(this.PROFILE, JSON.stringify({ user }));
-
-      this.loadProfile();
-
-      return Promise.resolve();
-    } catch (error) {
-      alert("Server error has occured", error);
-
-      return Promise.reject(error);
-    }
-  }
-
-  @action.bound
   logout() {
     window.localStorage.removeItem(this.PROFILE);
     this.user = null;
+    this.ready = false;
   }
 }
 

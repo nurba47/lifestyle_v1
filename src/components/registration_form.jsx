@@ -2,7 +2,8 @@ import React from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import { inject } from "mobx-react";
 
-@withRouter @inject("authCtrl")
+@withRouter
+@inject("authCtrl")
 class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
@@ -18,8 +19,7 @@ class RegisterForm extends React.Component {
       <div className="container">
         <form
           className="shadow p-3 mb-5 bg-white rounded"
-          style={{ width: "600px", margin: "0 auto" }}
-        >
+          style={{ width: "600px", margin: "0 auto" }}>
           <div className="form-group" style={{ width: "100%", padding: "15px 20px" }}>
             <label htmlFor="email">Email</label>
             <input
@@ -35,8 +35,7 @@ class RegisterForm extends React.Component {
           </div>
           <div
             className="form-group align-self-center"
-            style={{ width: "100%", padding: "15px 20px" }}
-          >
+            style={{ width: "100%", padding: "15px 20px" }}>
             <label htmlFor="password">Пароль</label>
             <input
               type="password"
@@ -51,8 +50,7 @@ class RegisterForm extends React.Component {
           </div>
           <div
             className="form-group align-self-center"
-            style={{ width: "100%", padding: "15px 20px" }}
-          >
+            style={{ width: "100%", padding: "15px 20px" }}>
             <label htmlFor="referralCode">Реферальный код</label>
             <input
               type="text"
@@ -70,8 +68,7 @@ class RegisterForm extends React.Component {
               type="button"
               className="btn btn-primary"
               style={{ borderRadius: "8px", marginRight: "15px" }}
-              onClick={this.onFormSubmit}
-            >
+              onClick={this.onFormSubmit}>
               Зарегистрироваться
             </button>
             <NavLink to="/login" className="btn btn-primary" style={{ borderRadius: "8px" }}>
@@ -98,7 +95,7 @@ class RegisterForm extends React.Component {
   onFormSubmit = async event => {
     event.preventDefault();
     this.props.authCtrl
-      .register(this.state)
+      .auth(false, this.state)
       .then(() => this.props.history.replace("/"))
       .catch(error => console.log(error));
   };

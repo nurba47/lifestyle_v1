@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "react-bootstrap";
 
 const styles = {
   width: "100%",
@@ -42,7 +43,7 @@ const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange, onRowR
 
       {!readOnly && (
         <td style={{ textAlign: "center", width: "10%" }}>
-          <button onClick={() => onRowRemove(index)} />
+          <Button bsStyle="primary" onClick={() => onRowRemove(index)} style={{ height: "15px" }} />
         </td>
       )}
     </tr>
