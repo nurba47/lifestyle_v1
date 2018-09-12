@@ -3,7 +3,7 @@ import { REWARDS, REWARDS_OF_USER } from "../pathes";
 
 // when user makes request
 export const getForUser = () => {
-  return request.get(`${REWARDS_OF_USER}`);
+  return request.get(REWARDS_OF_USER);
 };
 
 export const get = userId => {
@@ -11,9 +11,13 @@ export const get = userId => {
 };
 
 export const create = data => {
-  return request.post(`${REWARDS}/`, data);
+  return request.post(REWARDS, data);
 };
 
 export const update = data => {
-  return request.put(`${REWARDS}/`, data);
+  return request.put(REWARDS, data);
+};
+
+export const remove = data => {
+  return request.remove(REWARDS, data);
 };

@@ -67,3 +67,21 @@ export function put(url, param) {
       });
   });
 }
+
+export function remove(url, param) {
+  param = param || {};
+  return new Promise(function(resolve, reject) {
+    instance
+      .delete(url, { data: param })
+      .then(resp => {
+        if (resp && resp.data) {
+          resolve(resp.data);
+        } else {
+          reject(null);
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}

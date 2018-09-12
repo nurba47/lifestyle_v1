@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { Table, Button } from "react-bootstrap";
+import { Table, ButtonGroup, Button } from "react-bootstrap";
 import TableRow from "./Row";
 import UserSelect from "./UserSelect";
 
@@ -22,6 +22,8 @@ export default class extends Component {
       rewards,
       onUserSelect,
       onNewRewardAdd,
+      onSaveRewards,
+      onCancelRewards,
       onRowValueChange,
       onRowRemove,
       computedResult
@@ -31,7 +33,7 @@ export default class extends Component {
 
     return (
       <div>
-        <h3 style={{ padding: "20px" }}>Список вознаграждений</h3>
+        <h3 className="pt-3">Список вознаграждений</h3>
         <UserSelect users={users} onChange={onUserSelect} />
         <h5>
           Вознаграждение <strong>{computedResult}</strong>
@@ -59,9 +61,17 @@ export default class extends Component {
             ))}
           </tbody>
         </Table>
-        <Button bsStyle="primary" bsSize="small" onClick={onNewRewardAdd}>
-          Добавить
-        </Button>
+        <ButtonGroup className="d-flex justify-content-center">
+          <Button bsStyle="danger" bsSize="small" onClick={onCancelRewards}>
+            Отменить
+          </Button>
+          <Button bsStyle="primary" bsSize="small" onClick={onNewRewardAdd}>
+            Добавить
+          </Button>
+          <Button bsStyle="primary" bsSize="small" onClick={onSaveRewards}>
+            Сохранить
+          </Button>
+        </ButtonGroup>
       </div>
     );
   }

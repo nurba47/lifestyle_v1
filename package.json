@@ -6,6 +6,7 @@
     "axios": "^0.18.0",
     "babel-plugin-styled-components": "^1.6.4",
     "font-awesome": "^4.7.0",
+    "lodash": "^4.17.10",
     "mobx": "^5.1.0",
     "mobx-react": "^5.2.8",
     "multi-select-react": "^0.1.8",

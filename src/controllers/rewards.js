@@ -43,6 +43,7 @@ class Rewards {
     if (!this.ready && user) {
       let users = await this.getAllUsers();
       this.users = users;
+      this.currentUserId = users[0]._id;
       this.ready = true;
     }
   }
@@ -80,11 +81,6 @@ class Rewards {
   }
 
   @action.bound
-  onNewRewardAdd() {
-    this.rewards.unshift(this.getDefReward());
-  }
-
-  @action.bound
   onRowValueChange(index, field, value) {
     this.rewards[index][field] = value;
   }
@@ -102,6 +98,43 @@ class Rewards {
         return total + (income - withdraw);
       }, 0);
     return result;
+  }
+
+  @action.bound
+  onNewRewardAdd() {
+    this.rewards.unshift(this.getDefReward());
+  }
+
+  @action.bound
+  onCancelRewards() {
+    this.rewards = this.rewardsOriginal.slice();
+  }
+
+  @action.bound
+  async onSaveRewards() {
+    let toCreate = this.rewards.filter(r => !r._id);
+    let toUpdate = this.rewards.filter(r => r._id);
+    let toDelete = this.rewardsOriginal.reduce((deleted, ro) => {
+      let found = this.rewards.find(r => r._id === ro._id);
+      if (!found) {
+        deleted.push(ro._id);
+      }
+      return deleted;
+    }, []);
+    debugger;
+    try {
+      if (toCreate.length)
+        await rewardsApi.create({ user_id: this.currentUserId, rewards: toCreate });
+
+      if (toUpdate.length)
+        await rewardsApi.update({ user_id: this.currentUserId, rewards: toUpdate });
+
+      if (toDelete.length)
+        await rewardsApi.remove({ user_id: this.currentUserId, reward_ids: toDelete });
+    } catch (error) {
+      alert("Ошибка при сохранении");
+      console.log(error);
+    }
   }
 
   getDefReward() {
