@@ -32,11 +32,29 @@ export function get(url, param) {
   });
 }
 
-export function post(url, param, silent) {
+export function post(url, param) {
   param = param || {};
   return new Promise(function(resolve, reject) {
     instance
       .post(url, param)
+      .then(resp => {
+        if (resp && resp.data) {
+          resolve(resp.data);
+        } else {
+          reject(null);
+        }
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
+
+export function put(url, param) {
+  param = param || {};
+  return new Promise(function(resolve, reject) {
+    instance
+      .put(url, param)
       .then(resp => {
         if (resp && resp.data) {
           resolve(resp.data);

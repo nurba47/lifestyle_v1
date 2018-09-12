@@ -7,10 +7,10 @@ const styles = {
   textAlign: "center"
 };
 
-const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange }) => {
+const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange, onRowRemove }) => {
   return (
     <tr>
-      <td>
+      <td style={{ width: "30%" }}>
         <input
           type="date"
           style={styles}
@@ -20,7 +20,7 @@ const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange }) => {
         />
       </td>
 
-      <td>
+      <td style={{ width: "30%" }}>
         <input
           type="number"
           style={styles}
@@ -30,7 +30,7 @@ const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange }) => {
         />
       </td>
 
-      <td>
+      <td style={{ width: "30%" }}>
         <input
           type="number"
           style={styles}
@@ -38,6 +38,10 @@ const TableRow = ({ date, income, withdraw, readOnly, index, onRowChange }) => {
           value={withdraw}
           onChange={event => onRowChange(index, "withdraw", event.target.value)}
         />
+      </td>
+
+      <td style={{ textAlign: "center", width: "10%" }}>
+        <button disabled={readOnly} onClick={() => onRowRemove(index)} />
       </td>
     </tr>
   );
