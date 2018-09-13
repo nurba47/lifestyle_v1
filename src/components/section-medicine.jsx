@@ -20,7 +20,7 @@ class MedicineSection extends React.Component {
 
                         <a className="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spa" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span className="mr-3 flaticon-ambulance"/>Ангунсахянг</a>
 
-                        <a className="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spa" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span className="mr-3 flaticon-ambulance"/>Тонбанханьамсо: Антираковый препарат</a>
+                        <a className="nav-link px-4" id="v-pills-spa-tab" data-toggle="pill" href="#v-pills-spe" role="tab" aria-controls="v-pills-spa" aria-selected="false"><span className="mr-3 flaticon-pharmacy"/>Тонбанханьамсо: Антираковый препарат</a>
 
                         </div>
                     </div>
@@ -74,7 +74,12 @@ class MedicineSection extends React.Component {
                             <p>Влияет на регенерацию нервных волокон, способствует их прорастанию в ткани, восстанавливает миелиновую оболочку. Регулирует мозговое кровообращение, улучшает взаимодействие между структурами головного мозга. Оказывает мягкое спазмолитическое и успокаивающее действие.</p>
                             <p><a href="/angus" className="btn btn-primary">Подробнее</a></p>
                         </div>
-                
+                            <div className="tab-pane fade py-5" id="v-pills-spe" role="tabpanel" aria-labelledby="v-pills-spa-tab">
+                                <span className="icon mb-3 d-block flaticon-pharmacy"/>
+                                <h2 className="mb-4">Тонбанханьамсо: Антираковый препарат</h2>
+                                <p>АнтиРак – это единственный в мире препарат на растительной основе, способный с высокой эффективностью лечить раковые заболевания.</p>
+                                <p><a href="/tonban" className="btn btn-primary">Подробнее</a></p>
+                            </div>
                         </div>
                         </div>
                     </div>

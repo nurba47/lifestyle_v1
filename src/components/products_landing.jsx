@@ -90,10 +90,10 @@ export default class ProductLanding extends React.Component {
                         </div>
                         <div className="col-lg-6 d-flex">
                             <div className="dept d-md-flex">
-                                <a href="/tanbon" className="img" style={{ backgroundImage: 'url(images/tao.jpg)'}}>
+                                <a href="/tonban" className="img" style={{ backgroundImage: 'url(images/tao.jpg)'}}>
                                 </a>
                                 <div className="text p-4">
-                                    <h3><a href="/tanbon">ТОНБАНХАНЬАМСО</a></h3>
+                                    <h3><a href="/tonban">ТОНБАНХАНЬАМСО</a></h3>
                                     <p><span className="loc">Северная Корея</span></p>
                                     <p>
                                     Состав препарата и форма выпуска
