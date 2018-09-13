@@ -25,6 +25,9 @@ class Rewards {
   @observable
   benefits;
 
+  @observable
+  points;
+
   constructor() {
     this.reset();
   }
