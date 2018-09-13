@@ -5,10 +5,10 @@ export default ({ value, label, onChange }) => {
   return (
     <div>
       <ControlLabel>{label}</ControlLabel>
-      <ButtonToolbar>
-        <ToggleButtonGroup value={value} type="radio" name={label} onChange={onChange}>
-          <ToggleButton value={1}>Да</ToggleButton>
-          <ToggleButton value={0}>Нет</ToggleButton>
+      <ButtonToolbar onChange={onChange}>
+        <ToggleButtonGroup value={value} type="radio" name={label} onClick={onChange}>
+          <ToggleButton value={1} onChange={onChange}>Да</ToggleButton>
+          <ToggleButton value={0} onChange={onChange}>Нет</ToggleButton>
         </ToggleButtonGroup>
       </ButtonToolbar>
     </div>

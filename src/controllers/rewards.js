@@ -21,12 +21,15 @@ class Rewards {
 
   @observable
   active;
+  activeOriginal;
 
   @observable
   benefits;
+  benefitsOriginal;
 
   @observable
   points;
+  pointsOriginal;
 
   constructor() {
     this.reset();
@@ -38,14 +41,14 @@ class Rewards {
     if (!this.ready && user) {
       let result = await rewardsApi.getForUser();
 
-      let { rewards, active, benefit, points } = result;
+      let { rewards, active, benefits, points } = result;
       rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
       rewards.sort((r1, r2) => r1.date < r2.date);
 
       this.rewards = rewards;
-      this.active = active;
-      this.benefits = benefit;
-      this.points = points;
+      this.activeOriginal = this.active = active;
+      this.benefitsOriginal = this.benefits = benefits;
+      this.pointsOriginal = this.points = points;
       this.ready = true;
     }
   }
@@ -67,11 +70,11 @@ class Rewards {
   @action
   reset() {
     this.users = null;
-    this.rewards = [];
     this.currentUserId = null;
-    this.active = null;
-    this.benefits = null;
-    this.points = null;
+    this.rewardsOriginal = this.rewards = [];
+    this.activeOriginal = this.active = null;
+    this.benefitsOriginal = this.benefits = null;
+    this.pointsOriginal = this.points = null;
     this.ready = false;
   }
 
@@ -83,7 +86,7 @@ class Rewards {
   @action.bound
   async getRewards() {
     let result = await rewardsApi.get(this.currentUserId);
-    let { rewards, active, benefit, points } = result;
+    let { rewards, active, benefits, points } = result;
     rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
     rewards.sort((r1, r2) => r1.date < r2.date);
 
@@ -91,10 +94,9 @@ class Rewards {
 
     this.rewards = rewards;
     this.rewardsOriginal = rewards.slice();
-    this.active = active;
-    this.benefits = benefit;
-    this.points = points;
-    debugger;
+    this.activeOriginal = this.active = active;
+    this.benefitsOriginal = this.benefits = benefits;
+    this.pointsOriginal = this.points = points;
   }
 
   @action.bound
@@ -104,13 +106,18 @@ class Rewards {
   }
 
   @action.bound
-  onActiveToggle(value) {
-    this.active = value;
+  onActiveToggle() {
+    this.active = !this.active;
   }
 
   @action.bound
-  onBenefitSelect(value) {
-    this.benefits = value;
+  onBenefitsToggle() {
+    this.benefits = !this.benefits;
+  }
+
+  @action.bound
+  onPointsSelect(value) {
+    this.points = value;
   }
 
   @action.bound
@@ -151,13 +158,20 @@ class Rewards {
     }
     let toCreate = this.rewards.filter(r => !r._id);
 
-    let toUpdate = this.rewards.filter(r => {
+    let toUpdate = {};
+    toUpdate.rewards = this.rewards.filter(r => {
       if (r._id) {
         let found = this.rewardsOriginal.find(ro => ro._id === r._id);
         return found && !_.isEqual(found, r);
       }
       return false;
     });
+
+    if (this.active !== this.activeOriginal) toUpdate.active = this.active;
+
+    if (this.benefits !== this.benefitsOriginal) toUpdate.benefits = this.benefits;
+
+    if (this.points !== this.pointsOriginal) toUpdate.points = this.points;
 
     let toDelete = this.rewardsOriginal.reduce((deleted, ro) => {
       let found = this.rewards.find(r => r._id === ro._id);
@@ -171,8 +185,8 @@ class Rewards {
       if (toCreate.length)
         await rewardsApi.create({ user_id: this.currentUserId, rewards: toCreate });
 
-      if (toUpdate.length)
-        await rewardsApi.update({ user_id: this.currentUserId, rewards: toUpdate });
+      if (Object.keys(toUpdate).length > 0)
+        await rewardsApi.update({ user_id: this.currentUserId, ...toUpdate });
 
       if (toDelete.length)
         await rewardsApi.remove({ user_id: this.currentUserId, reward_ids: toDelete });

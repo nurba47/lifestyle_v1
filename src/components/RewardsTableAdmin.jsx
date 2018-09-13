@@ -46,8 +46,8 @@ export default class extends Component {
         <SelectUser value={currentUserId} users={users} onChange={onUserSelect} />
 
         <Row className="justify-content-around">
-          {active && <RadioYesNo label="Активность" value={active ? 1 : 0} onChange={onActiveToggle} />}
-          {benefits && <RadioYesNo label="Льготы" value={benefits ? 1 : 0} onChange={onBenefitsToggle} />}
+          <RadioYesNo label="Активность" value={active ? 1 : 0} onChange={onActiveToggle} />
+          <RadioYesNo label="Льготы" value={benefits ? 1 : 0} onChange={onBenefitsToggle} />
         </Row>
 
         {points && <SelectPoints value={points} onChange={onPointsSelect} />}
