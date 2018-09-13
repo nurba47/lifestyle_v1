@@ -19,6 +19,12 @@ class Rewards {
   @observable
   currentUserId;
 
+  @observable
+  active;
+
+  @observable
+  benefit;
+
   constructor() {
     this.reset();
   }
@@ -29,11 +35,13 @@ class Rewards {
     if (!this.ready && user) {
       let result = await rewardsApi.getForUser();
 
-      let { rewards } = result;
+      let { rewards, active, benefits } = result;
       rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
       rewards.sort((r1, r2) => r1.date < r2.date);
 
       this.rewards = rewards;
+      this.active = active;
+      this.benefit = benefits;
       this.ready = true;
     }
   }
@@ -68,7 +76,7 @@ class Rewards {
   @action.bound
   async getRewards() {
     let result = await rewardsApi.get(this.currentUserId);
-    let { rewards } = result;
+    let { rewards, active, benefits } = result;
     rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
     rewards.sort((r1, r2) => r1.date < r2.date);
 
@@ -76,12 +84,24 @@ class Rewards {
 
     this.rewards = rewards;
     this.rewardsOriginal = rewards.slice();
+    this.active = active;
+    this.benefit = benefits;
   }
 
   @action.bound
   onUserSelect(userId) {
     this.currentUserId = userId;
     this.getRewards();
+  }
+
+  @action.bound
+  onActiveToggle(value) {
+    this.active = value;
+  }
+
+  @action.bound
+  onBenefitSelect(value) {
+    this.benefit = value;
   }
 
   @action.bound

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
 import { Table, ButtonGroup, Button } from "react-bootstrap";
 import TableRow from "./Row";
-import UserSelect from "./UserSelect";
+import SelectUser from "./SelectUser";
+import SelectBenefit from "./SelectBenefit";
 
 @inject("authCtrl", "rewardsCtrl")
 @observer
@@ -20,7 +21,12 @@ export default class extends Component {
       ready,
       users,
       rewards,
+      currentUserId,
+      active,
+      benefit,
       onUserSelect,
+      onBenefitSelect,
+      onActiveToggle,
       onNewRewardAdd,
       onSaveRewards,
       onCancelRewards,
@@ -33,8 +39,10 @@ export default class extends Component {
 
     return (
       <div>
-        <h3 className="pt-3">Список вознаграждений</h3>
-        <UserSelect users={users} onChange={onUserSelect} />
+        <h3 className="pt-2">Список вознаграждений</h3>
+        <SelectUser value={currentUserId} users={users} onChange={onUserSelect} />
+
+        {benefit && <SelectBenefit value={benefit} onChange={onBenefitSelect} />}
         <h5>
           Вознаграждение <strong>{computedResult}</strong>
         </h5>
