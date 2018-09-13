@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { Table } from "react-bootstrap";
+import { Row, Table } from "react-bootstrap";
 import TableRow from "./Row";
+import SelectPoints from "./SelectPoints";
+import RadioYesNo from "./RadioYesNo";
 
 @inject("rewardsCtrl")
 @observer
@@ -15,7 +17,7 @@ export default class RewardsTable extends Component {
   }
 
   render() {
-    let { ready, rewards, computedResult } = this.props.rewardsCtrl;
+    let { ready, active, benefits, points, rewards, computedResult } = this.props.rewardsCtrl;
 
     if (!ready) return null;
 
@@ -25,6 +27,12 @@ export default class RewardsTable extends Component {
         {shouldRenderTable && (
           <div>
             <h3>Список вознаграждений</h3>
+            <Row className="justify-content-around">
+              <RadioYesNo label="Активность" value={active ? 1 : 0} readOnly />
+              <RadioYesNo label="Льготы" value={benefits ? 1 : 0} readOnly />
+            </Row>
+
+            {points && <SelectPoints value={points} readOnly />}
             <h5>
               Вознаграждение <strong>{computedResult}</strong>
             </h5>

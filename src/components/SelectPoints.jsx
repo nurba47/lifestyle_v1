@@ -7,7 +7,7 @@ const benefits = [
   { name: "400", value: 400 }
 ];
 
-export default ({ value, onChange }) => {
+export default ({ value, readOnly, onChange }) => {
   return (
     <FormGroup>
       <ControlLabel>Баллы</ControlLabel>
@@ -15,6 +15,7 @@ export default ({ value, onChange }) => {
         bsSize="sm"
         componentClass="select"
         value={value}
+        disabled={readOnly}
         onChange={e => onChange(e.target.value)}>
         {benefits.map(b => (
           <option key={b.value} value={b.value}>
