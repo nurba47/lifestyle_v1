@@ -46,7 +46,7 @@ class Rewards {
       this.users = users;
 
       this.currentUserId = users[0]._id;
-      this.getRewards()
+      this.getRewards();
 
       this.ready = true;
     }
@@ -111,7 +111,7 @@ class Rewards {
 
   @action.bound
   onCancelRewards() {
-    this.rewards = this.rewardsOriginal && this.rewardsOriginal.slice() || [];
+    this.rewards = (this.rewardsOriginal && this.rewardsOriginal.slice()) || [];
   }
 
   @action.bound
@@ -127,6 +127,7 @@ class Rewards {
         let found = this.rewardsOriginal.find(ro => ro._id === r._id);
         return found && !_.isEqual(found, r);
       }
+      return false;
     });
 
     let toDelete = this.rewardsOriginal.reduce((deleted, ro) => {
