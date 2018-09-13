@@ -41,11 +41,6 @@ class Profile extends React.Component {
             <h5 className="card-title">Пользователь: {user.email}</h5>
             <h5 className="card-text">Реферальный код: {user.referralCode}</h5>
             <h5 className="card-text">Дата регистрации: {user.registrationDate}</h5>
-            <select className="option">
-              <option>100 - Льгота</option>
-              <option>250 - Льгота</option>
-              <option>400 - Льгота</option>
-            </select>
             {user.isAdmin && <RewardsTableAdmin />}
             {!user.isAdmin && <RewardsTable />}
           </Col>
