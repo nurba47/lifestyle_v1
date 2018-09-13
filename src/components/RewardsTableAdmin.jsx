@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { Table, ButtonGroup, Button } from "react-bootstrap";
+import { Row, Table, ButtonGroup, Button } from "react-bootstrap";
 import TableRow from "./Row";
 import SelectUser from "./SelectUser";
-import SelectBenefit from "./SelectBenefit";
+import SelectPoints from "./SelectPoints";
+import RadioYesNo from "./RadioYesNo";
 
 @inject("authCtrl", "rewardsCtrl")
 @observer
@@ -23,10 +24,12 @@ export default class extends Component {
       rewards,
       currentUserId,
       active,
-      benefit,
+      benefits,
+      points,
       onUserSelect,
-      onBenefitSelect,
+      onPointsSelect,
       onActiveToggle,
+      onBenefitsToggle,
       onNewRewardAdd,
       onSaveRewards,
       onCancelRewards,
@@ -42,7 +45,13 @@ export default class extends Component {
         <h3 className="pt-2">Список вознаграждений</h3>
         <SelectUser value={currentUserId} users={users} onChange={onUserSelect} />
 
-        {benefit && <SelectBenefit value={benefit} onChange={onBenefitSelect} />}
+        <Row className="justify-content-around">
+          {active && <RadioYesNo label="Активность" value={active ? 1 : 0} onChange={onActiveToggle} />}
+          {benefits && <RadioYesNo label="Льготы" value={benefits ? 1 : 0} onChange={onBenefitsToggle} />}
+        </Row>
+
+        {points && <SelectPoints value={points} onChange={onPointsSelect} />}
+
         <h5>
           Вознаграждение <strong>{computedResult}</strong>
         </h5>

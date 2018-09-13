@@ -3,14 +3,14 @@ import { FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 
 const benefits = [
   { name: "100", value: 100 },
-  { name: "200", value: 200 },
-  { name: "300", value: 300 }
+  { name: "250", value: 250 },
+  { name: "400", value: 400 }
 ];
 
 export default ({ value, onChange }) => {
   return (
     <FormGroup>
-      <ControlLabel>Льгота</ControlLabel>
+      <ControlLabel>Баллы</ControlLabel>
       <FormControl
         bsSize="sm"
         componentClass="select"

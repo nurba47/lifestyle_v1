@@ -23,7 +23,7 @@ class Rewards {
   active;
 
   @observable
-  benefit;
+  benefits;
 
   constructor() {
     this.reset();
@@ -35,13 +35,14 @@ class Rewards {
     if (!this.ready && user) {
       let result = await rewardsApi.getForUser();
 
-      let { rewards, active, benefits } = result;
+      let { rewards, active, benefit, points } = result;
       rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
       rewards.sort((r1, r2) => r1.date < r2.date);
 
       this.rewards = rewards;
       this.active = active;
-      this.benefit = benefits;
+      this.benefits = benefit;
+      this.points = points;
       this.ready = true;
     }
   }
@@ -65,6 +66,9 @@ class Rewards {
     this.users = null;
     this.rewards = [];
     this.currentUserId = null;
+    this.active = null;
+    this.benefits = null;
+    this.points = null;
     this.ready = false;
   }
 
@@ -76,7 +80,7 @@ class Rewards {
   @action.bound
   async getRewards() {
     let result = await rewardsApi.get(this.currentUserId);
-    let { rewards, active, benefits } = result;
+    let { rewards, active, benefit, points } = result;
     rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
     rewards.sort((r1, r2) => r1.date < r2.date);
 
@@ -85,7 +89,9 @@ class Rewards {
     this.rewards = rewards;
     this.rewardsOriginal = rewards.slice();
     this.active = active;
-    this.benefit = benefits;
+    this.benefits = benefit;
+    this.points = points;
+    debugger;
   }
 
   @action.bound
@@ -101,7 +107,7 @@ class Rewards {
 
   @action.bound
   onBenefitSelect(value) {
-    this.benefit = value;
+    this.benefits = value;
   }
 
   @action.bound
