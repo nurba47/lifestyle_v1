@@ -148,6 +148,9 @@ class Rewards {
   @action.bound
   onCancelRewards() {
     this.rewards = (this.rewardsOriginal && this.rewardsOriginal.slice()) || [];
+    this.active = this.activeOriginal;
+    this.benefits = this.benefitsOriginal;
+    this.points = this.pointsOriginal;
   }
 
   @action.bound
