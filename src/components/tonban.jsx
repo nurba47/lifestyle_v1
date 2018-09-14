@@ -149,20 +149,6 @@ export default class TonbanProduct extends React.Component {
               </div>
             </div>
             <div className="sidebar-box">
-              <h3>Tag Cloud</h3>
-              <div className="tagcloud">
-                <a href="!#" className="tag-cloud-link">medical</a>
-                <a href="!#" className="tag-cloud-link">cure</a>
-                <a href="!#" className="tag-cloud-link">remedy</a>
-                <a href="!#" className="tag-cloud-link">health</a>
-                <a href="!#" className="tag-cloud-link">workout</a>
-                <a href="!#" className="tag-cloud-link">medicine</a>
-                <a href="!#" className="tag-cloud-link">doctor</a>
-                <a href="!#" className="tag-cloud-link">medic</a>
-              </div>
-            </div>
-
-            <div className="sidebar-box">
               <h3>Состав препарата и форма выпуска</h3>
               <p>АнтиРак состоит из полезных компонентов и биологически активных добавок, выделенных из корейского женьшеня, аралии и других лекарственных растений.</p>
             </div>

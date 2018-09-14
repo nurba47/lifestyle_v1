@@ -5,7 +5,7 @@ export default class ExtractProduct extends React.Component {
         return(
             <div>
                     <div className="hero-wrap" style={{ backgroundImage: 'url(images/111.jpg)', backgroundAttachment:'fixed' }}>
-      <div className="overlay"></div>
+      <div className="overlay"> </div>
       <div className="container">
         <div className="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div className="col-md-8 text-center">
@@ -70,26 +70,12 @@ export default class ExtractProduct extends React.Component {
             <div className="sidebar-box">
               <div className="categories">
                 <h3>Категория</h3>
-                <li><a href="/kymdan5">Кымдан - 5 <span></span></a></li>
-                <li><a href="/royal">Royal Blood freesh<span></span></a></li>
-                <li><a href="/kymdan2">Кымдан - 2<span></span></a></li>
-                <li><a href="/bear">Медвежая желчь в ампулах<span></span></a></li>
-                <li><a href="/angus">Ангунсахянг<span></span></a></li>
-                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат<span></span></a></li>
-              </div>
-            </div>
-
-            <div className="sidebar-box">
-              <h3>Tag Cloud</h3>
-              <div className="tagcloud">
-                <a href="!#" className="tag-cloud-link">medical</a>
-                <a href="!#" className="tag-cloud-link">cure</a>
-                <a href="!#" className="tag-cloud-link">remedy</a>
-                <a href="!#" className="tag-cloud-link">health</a>
-                <a href="!#" className="tag-cloud-link">workout</a>
-                <a href="!#" className="tag-cloud-link">medicine</a>
-                <a href="!#" className="tag-cloud-link">doctor</a>
-                <a href="!#" className="tag-cloud-link">medic</a>
+                <li><a href="/kymdan5">Кымдан - 5</a></li>
+                <li><a href="/royal">Royal Blood fresh</a></li>
+                <li><a href="/kymdan2">Кымдан - 2</a></li>
+                <li><a href="/bear">Медвежая желчь в ампулах</a></li>
+                <li><a href="/angus">Ангунсахянг</a></li>
+                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат</a></li>
               </div>
             </div>
 

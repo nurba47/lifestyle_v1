@@ -4,25 +4,25 @@ export default class RoyalScene extends React.Component {
     render() {
         return(
             <div style={{ backgroundColor: '#fff'}}>
-                <div class="hero-wrap" style={{ backgroundImage: 'url(images/royal.png)', backgroundAttachment:'fixed' }}>
-      <div class="overlay"/>
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-          <div class="col-md-8 text-center">
-            <h1 class="mb-3 bread">ROYAL BLOOD FRESH  ХЁЛГУНБУЛЛОЧЖОН</h1>
+                <div className="hero-wrap" style={{ backgroundImage: 'url(images/royal.png)', backgroundAttachment:'fixed' }}>
+      <div className="overlay"/>
+      <div className="container">
+        <div className="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+          <div className="col-md-8 text-center">
+            <h1 className="mb-3 bread">ROYAL BLOOD FRESH  ХЁЛГУНБУЛЛОЧЖОН</h1>
           </div>
         </div>
       </div>
     </div>
 
-    <section class="ftco-section ftco-degree-bg">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
+    <section className="ftco-section ftco-degree-bg">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
             <p>
-              <img src="images/44.jpg" alt="" class="img-fluid"/>
+              <img src="images/44.jpg" alt="" className="img-fluid"/>
             </p>
-            <h2 class="mb-3">ROYAL BLOOD FRESH / ХЁЛГУНБУЛЛОЧЖОН</h2>
+            <h2 className="mb-3">ROYAL BLOOD FRESH / ХЁЛГУНБУЛЛОЧЖОН</h2>
             <p><strong><u>Состав и форма выпуска</u></strong><br/>
             В составе «хёлгунбуллочжона» содержатся в большом количестве сильно действующие антиокислители, в том числе фермент (SOD), выделенный из соевых бобов. Хёлгунбуллочжон, является пищевой добавкой в котором содержатся:
             </p>
@@ -67,21 +67,21 @@ export default class RoyalScene extends React.Component {
             </p>
             
           </div>
-          <div class="col-md-4 sidebar">
-            <div class="sidebar-box">
+          <div className="col-md-4 sidebar">
+            <div className="sidebar-box">
             </div>
-            <div class="sidebar-box">
-              <div class="categories">
+            <div className="sidebar-box">
+              <div className="categories">
                 <h3>Категория</h3>
-                <li><a href="/kymdan5">Кымдан - 5 <span></span></a></li>
-                <li><a href="/kymdan2">Кымдан - 2<span></span></a></li>
-                <li><a href="/extract">Экстракт корейской горянки<span></span></a></li>
-                <li><a href="/bear">Медвежая желчь в ампулах<span></span></a></li>
-                <li><a href="/angus">Ангунсахянг<span></span></a></li>
-                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат<span></span></a></li>
+                <li><a href="/kymdan5">Кымдан - 5 </a></li>
+                <li><a href="/kymdan2">Кымдан - 2 </a></li>
+                <li><a href="/extract">Экстракт корейской горянки</a></li>
+                <li><a href="/bear">Медвежая желчь в ампулах</a></li>
+                <li><a href="/angus">Ангунсахянг</a></li>
+                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат</a></li>
               </div>
             </div>
-            <div class="sidebar-box">
+            <div className="sidebar-box">
               <h3>Состав и форма выпуска</h3>
               <p>В составе «хёлгунбуллочжона» содержатся в большом количестве сильно действующие антиокислители, в том числе фермент (SOD), выделенный из соевых бобов. Хёлгунбуллочжон, является пищевой добавкой</p>
             </div>

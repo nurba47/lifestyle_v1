@@ -77,29 +77,14 @@ export default class BearProduct extends React.Component {
             <div className="sidebar-box">
               <div className="categories">
                 <h3>Категория</h3>
-                <li><a href="/kymdan5">Кымдан - 5 <span></span></a></li>
-                <li><a href="/royal">Royal Blood freesh<span></span></a></li>
-                <li><a href="/extract">Экстракт корейской горянки<span></span></a></li>
-                <li><a href="/kymdan2">Кымдан - 2<span></span></a></li>
-                <li><a href="/angus">Ангунсахянг<span></span></a></li>
-                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат<span></span></a></li>
+                <li><a href="/kymdan5">Кымдан - 5</a></li>
+                <li><a href="/royal">Royal Blood fresh</a></li>
+                <li><a href="/extract">Экстракт корейской горянки</a></li>
+                <li><a href="/kymdan2">Кымдан - 2</a></li>
+                <li><a href="/angus">Ангунсахянг</a></li>
+                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат</a></li>
               </div>
             </div>
-
-            <div className="sidebar-box">
-              <h3>Tag Cloud</h3>
-              <div className="tagcloud">
-                <a href="!#" className="tag-cloud-link">medical</a>
-                <a href="!#" className="tag-cloud-link">cure</a>
-                <a href="!#" className="tag-cloud-link">remedy</a>
-                <a href="!#" className="tag-cloud-link">health</a>
-                <a href="!#" className="tag-cloud-link">workout</a>
-                <a href="!#" className="tag-cloud-link">medicine</a>
-                <a href="!#" className="tag-cloud-link">doctor</a>
-                <a href="!#" className="tag-cloud-link">medic</a>
-              </div>
-            </div>
-
             <div className="sidebar-box">
               <h3>Медвежья желчь</h3>
               <p>Медвежья желчь насчитывает в своем составе до 90% всех существующих в природе желчных кислот. Она богата природными кислотами UDCA и на данный момент является их единственным натуральным источником. Содержит желчные кислоты CDCA и CA, желчные пигменты, фосфолипиды и жиры, а также набор аминокислот.</p>
