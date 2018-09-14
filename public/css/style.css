@@ -7273,7 +7273,7 @@ body {
   font-size: 15px;
   line-height: 1.8;
   font-weight: 400;
-  color: #7782aa; }
+  color: #000000; }
   body.menu-show {
     overflow: hidden;
     position: fixed;
@@ -7745,7 +7745,7 @@ h1, h2, h3, h4, h5,
     color: #167ce9;
     font-size: 24px; }
   .services-wrap p {
-    color: #7782aa;
+    color: #000000;
     margin-bottom: 0; }
   .services-wrap .icon {
     position: absolute;
