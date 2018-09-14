@@ -8,7 +8,7 @@ export default class ProductLanding extends React.Component {
                     <div className="row d-flex">
                         <div className="col-lg-6 d-flex">
                             <div className="dept d-md-flex">
-                                <a href="/kymdan2" className="img" style={{ backgroundImage: 'url(images/IMG_2939.jpg)'}}>
+                                <a href="/kymdan2" className="img" style={{ backgroundImage: 'url(images/kym2.jpeg)'}}>
                                 </a>
                                 <div className="text p-4">
                                     <h3><a href="/kymdan2">Кымдан - 2</a></h3>
@@ -81,7 +81,7 @@ export default class ProductLanding extends React.Component {
                                 <a href="/angus" className="img" style={{ backgroundImage: 'url(images/ang.jpg)'}}>
                                 </a>
                                 <div className="text p-4">
-                                    <h3><a href="/angus">АНГУНСАХЯНГ</a></h3>
+                                    <h3><a href="/angus">АНГУНСАХЬЯНГ</a></h3>
                                     <p><span className="loc">Cеверная Корея</span></p>
                                     <p>АНГУНСАХЬЯНГ эффективно применяется в качестве «карманной» реанимации, а также рекомендуется на всех этапах восстановительного лечения.</p>
                                     <p>В одной упаковке содержится 6 флакончиков по 2 г препарата (1 упаковка= 12 г).</p>

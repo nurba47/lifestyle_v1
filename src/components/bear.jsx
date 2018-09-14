@@ -81,7 +81,7 @@ export default class BearProduct extends React.Component {
                 <li><a href="/royal">Royal Blood fresh</a></li>
                 <li><a href="/extract">Экстракт корейской горянки</a></li>
                 <li><a href="/kymdan2">Кымдан - 2</a></li>
-                <li><a href="/angus">Ангунсахянг</a></li>
+                <li><a href="/angus">Ангунсахьянг</a></li>
                 <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат</a></li>
               </div>
             </div>

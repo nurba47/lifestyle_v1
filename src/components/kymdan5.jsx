@@ -79,7 +79,7 @@ export default class Kymdan5Product extends React.Component {
                 <li><a href="/royal">Royal Blood freesh<span></span></a></li>
                 <li><a href="/extract">Экстракт корейской горянки<span></span></a></li>
                 <li><a href="/bear">Медвежая желчь в ампулах<span></span></a></li>
-                <li><a href="/angus">Ангунсахянг<span></span></a></li>
+                <li><a href="/angus">Ангунсахьянг<span></span></a></li>
                 <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат<span></span></a></li>
               </div>
             </div>

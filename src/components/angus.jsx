@@ -9,7 +9,7 @@ export default class AngusProduct extends React.Component {
       <div className="container">
         <div className="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
           <div className="col-md-8 text-center">
-            <h1 className="mb-3 bread">АНГУНСАХЯНГ</h1>
+            <h1 className="mb-3 bread">АНГУНСАХЬЯНГ</h1>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ export default class AngusProduct extends React.Component {
               <div className="categories">
                 <h3>Категория</h3>
                 <li><a href="/kymdan5">Кымдан - 5 <span> </span></a></li>
-                <li><a href="/royal">Royal Blood freesh<span> </span></a></li>
+                <li><a href="/royal">Royal Blood fresh<span> </span></a></li>
                 <li><a href="/extract">Экстракт корейской горянки<span> </span></a></li>
                 <li><a href="/bear">Медвежая желчь в ампулах<span> </span></a></li>
                 <li><a href="/kymdan2">Кымдан - 2<span> </span></a></li>

@@ -13,7 +13,7 @@ class BestSellerSection extends React.Component {
                     <div className="row d-flex">
                     <div className="col-md-6">
                         <div className="blog-entry align-self-stretch d-flex">
-                        <a href="/kymdan2" className="block-20 order-md-last" style={{ backgroundImage: 'url(images/IMG_2939.jpg)' }}>
+                        <a href="/kymdan2" className="block-20 order-md-last" style={{ backgroundImage: 'url(images/kym2.jpeg)' }}>
                         </a>
                         <div className="text p-4 d-block">
                             <div className="meta mb-3"/>
