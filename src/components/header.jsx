@@ -33,11 +33,11 @@ class Header extends React.Component {
 
           <div className="collapse navbar-collapse" id="ftco-nav">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item active">
-                <NavLink to="/" className="nav-link">
-                  Главная
-                </NavLink>
-              </li>
+                <li className="nav-item">
+                    <NavLink to="/about" className="nav-link">
+                        О проекте
+                    </NavLink>
+                </li>
               <li className="nav-item">
                 <NavLink to="/about_products" className="nav-link">
                   О продукции
@@ -51,11 +51,6 @@ class Header extends React.Component {
               <li className="nav-item">
                 <NavLink to="/marketing" className="nav-link">
                   Маркетинг план
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/about" className="nav-link">
-                  О проекте
                 </NavLink>
               </li>
               <li className="nav-item cta">

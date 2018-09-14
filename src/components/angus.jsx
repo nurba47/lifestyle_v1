@@ -22,7 +22,7 @@ export default class AngusProduct extends React.Component {
             <p>
               <img src="images/ang.jpg" alt="" className="img-fluid"/>
             </p>
-            <h2 className="mb-3">АНГУНСАХЯНГ</h2>
+            <h2 className="mb-3">АНГУНСАХЬЯНГ</h2>
             <p>В одной упаковке содержится 6 флакончиков по 2 г препарата (1 упаковка= 12 г).
             АНГУНСАХЬЯНГ эффективно применяется в качестве «карманной» реанимации, а также рекомендуется на всех этапах восстановительного лечения.<br/>
             <strong><u>Состав:</u></strong><br/>
@@ -66,21 +66,20 @@ export default class AngusProduct extends React.Component {
             <div className="sidebar-box">
               <div className="categories">
                 <h3>Категория</h3>
-                <li><a href="/kymdan5">Кымдан - 5 <span></span></a></li>
-                <li><a href="/royal">Royal Blood freesh<span></span></a></li>
-                <li><a href="/extract">Экстракт корейской горянки<span></span></a></li>
-                <li><a href="/bear">Медвежая желчь в ампулах<span></span></a></li>
-                <li><a href="/kymdan2">Кымдан - 2<span></span></a></li>
-                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат<span></span></a></li>
+                <li><a href="/kymdan5">Кымдан - 5 <span> </span></a></li>
+                <li><a href="/royal">Royal Blood freesh<span> </span></a></li>
+                <li><a href="/extract">Экстракт корейской горянки<span> </span></a></li>
+                <li><a href="/bear">Медвежая желчь в ампулах<span> </span></a></li>
+                <li><a href="/kymdan2">Кымдан - 2<span> </span></a></li>
+                <li><a href="/tonban">Тонбанханьамсо: Антираковый препарат<span> </span></a></li>
               </div>
             </div>
             <div className="sidebar-box">
-              <h3>АНГУНСАХЯНГ</h3>
+              <h3>АНГУНСАХЬЯНГ</h3>
               <p>
               В одной упаковке содержится 6 флакончиков по 2 г препарата (1 упаковка= 12 г). АНГУНСАХЬЯНГ эффективно применяется в качестве «карманной» реанимации, а также рекомендуется на всех этапах восстановительного лечения.</p>
             </div>
           </div>
-
         </div>
       </div>
     </section> 
