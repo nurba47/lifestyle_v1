@@ -17,7 +17,7 @@ class LoginForm extends React.Component {
       <div className="container-fluid">
         <form
           className="shadow p-3 mb-5 bg-white rounded"
-          style={{ width: "600px", margin: "0 auto" }}
+          style={{ minWidth: "300px", margin: "0 auto" }}
         >
           <div className="form-group" style={{ width: "100%", padding: "15px 20px" }}>
             <label htmlFor="email">Email</label>

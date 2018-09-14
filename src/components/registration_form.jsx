@@ -19,7 +19,7 @@ class RegisterForm extends React.Component {
       <div className="container">
         <form
           className="shadow p-3 mb-5 bg-white rounded"
-          style={{ width: "600px", margin: "0 auto" }}>
+          style={{ minWidth: "300px", margin: "0 auto" }}>
           <div className="form-group" style={{ width: "100%", padding: "15px 20px" }}>
             <label htmlFor="email">Email</label>
             <input
@@ -67,11 +67,11 @@ class RegisterForm extends React.Component {
             <button
               type="button"
               className="btn btn-primary"
-              style={{ borderRadius: "8px", marginRight: "15px" }}
+              style={{ borderRadius: "8px", marginRight: "15px", marginBottom: "15px" }}
               onClick={this.onFormSubmit}>
               Зарегистрироваться
             </button>
-            <NavLink to="/login" className="btn btn-primary" style={{ borderRadius: "8px" }}>
+            <NavLink to="/login" className="btn btn-primary" style={{ borderRadius: "8px", marginBottom: "15px" }}>
               Авторизация
             </NavLink>
           </div>
