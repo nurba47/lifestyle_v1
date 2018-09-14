@@ -66,7 +66,7 @@ export default class MarketingScene extends React.Component {
                         </tr>
                         <tr>
                             <td colSpan="5" bgcolor="aqua">3.</td>
-                            <td colSpan={5} bgcolor="#f0ffff">Ангунсахянг</td>
+                            <td colSpan={5} bgcolor="#f0ffff">Ангунсахьянг</td>
                             <td colSpan={5} bgcolor="#f0ffff">3 700</td>
                             <td colSpan={5} bgcolor="#f0ffff">4 000</td>
                         </tr>
