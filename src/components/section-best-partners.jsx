@@ -25,7 +25,7 @@ class BestPartnerSection extends React.Component {
                             </blockquote>
                             <div className="author d-flex">
                             <div className="image mr-3 align-self-center">
-                                <div className="img" style={{ backgroundImage: 'url(images/par1.jpeg)' }}></div>
+                                <div className="img" style={{ backgroundImage: 'url(images/par1.jpeg)' }}> </div>
                             </div>
                             <div className="name align-self-center"><span className="position">Партнер</span></div>
                             </div>
@@ -47,7 +47,7 @@ class BestPartnerSection extends React.Component {
                             </blockquote>
                             <div className="author d-flex">
                             <div className="image mr-3 align-self-center">
-                                <div className="img" style={{ backgroundImage: 'url(images/par2.jpeg)' }}></div>
+                                <div className="img" style={{ backgroundImage: 'url(images/par2.jpeg)' }}> </div>
                             </div>
                             <div className="name align-self-center"><span className="position">Партнер</span></div>
                             </div>
