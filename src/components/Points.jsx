@@ -2,7 +2,7 @@ import React from "react";
 import SelectPoints from "./SelectPoints";
 import FieldGroup from "./FieldGroup";
 
-export default ({ totalPoints, points, onPointsSelect }) => {
+export default ({ totalPoints, onTotalPointsChange, points, onPointsSelect }) => {
   return (
     <div>
       <SelectPoints value={points} onChange={onPointsSelect} />
@@ -11,7 +11,7 @@ export default ({ totalPoints, points, onPointsSelect }) => {
         label="Общее количество баллов"
         type="number"
         value={totalPoints}
-        onChange={() => {}}
+        onChange={onTotalPointsChange}
       />
     </div>
   );

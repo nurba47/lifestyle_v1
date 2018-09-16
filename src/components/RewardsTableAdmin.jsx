@@ -3,7 +3,6 @@ import { inject, observer } from "mobx-react";
 import { Row, Table, ButtonGroup, Button } from "react-bootstrap";
 import TableRow from "./Row";
 import SelectUser from "./SelectUser";
-import SelectPoints from "./SelectPoints";
 import RadioYesNo from "./RadioYesNo";
 import Points from "./Points";
 
@@ -26,8 +25,11 @@ export default class extends Component {
       currentUserId,
       active,
       benefits,
+      totalPoints,
       points,
+
       onUserSelect,
+      onTotalPointsChange,
       onPointsSelect,
       onActiveToggle,
       onBenefitsToggle,
@@ -51,7 +53,14 @@ export default class extends Component {
           <RadioYesNo label="Льготы" value={benefits ? 1 : 0} onChange={onBenefitsToggle} />
         </Row>
 
-        {points && <Points points={points} onPointsSelect={onPointsSelect} />}
+        {points && (
+          <Points
+            totalPoints={totalPoints}
+            onTotalPointsChange={onTotalPointsChange}
+            points={points}
+            onPointsSelect={onPointsSelect}
+          />
+        )}
 
         <h5>
           Вознаграждение <strong>{computedResult} сомов</strong>

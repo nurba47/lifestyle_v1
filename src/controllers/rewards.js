@@ -31,6 +31,10 @@ class Rewards {
   points;
   pointsOriginal;
 
+  @observable
+  totalPoints;
+  totalPointsOriginal;
+
   constructor() {
     this.reset();
   }
@@ -41,7 +45,7 @@ class Rewards {
     if (!this.ready && user) {
       let result = await rewardsApi.getForUser();
 
-      let { rewards, active, benefits, points } = result;
+      let { rewards, active, benefits, points, totalPoints } = result;
       rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
       rewards.sort((r1, r2) => r1.date < r2.date);
 
@@ -49,6 +53,7 @@ class Rewards {
       this.activeOriginal = this.active = active;
       this.benefitsOriginal = this.benefits = benefits;
       this.pointsOriginal = this.points = points;
+      this.totalPointsOriginal = this.totalPoints = totalPoints;
       this.ready = true;
     }
   }
@@ -75,6 +80,7 @@ class Rewards {
     this.activeOriginal = this.active = null;
     this.benefitsOriginal = this.benefits = null;
     this.pointsOriginal = this.points = null;
+    this.totalPointsOriginal = this.totalPoints = null;
     this.ready = false;
   }
 
@@ -86,7 +92,7 @@ class Rewards {
   @action.bound
   async getRewards() {
     let result = await rewardsApi.get(this.currentUserId);
-    let { rewards, active, benefits, points } = result;
+    let { rewards, active, benefits, points, totalPoints } = result;
     rewards.forEach(r => (r.date = formatDate(new Date(r.date))));
     rewards.sort((r1, r2) => r1.date < r2.date);
 
@@ -97,6 +103,7 @@ class Rewards {
     this.activeOriginal = this.active = active;
     this.benefitsOriginal = this.benefits = benefits;
     this.pointsOriginal = this.points = points;
+    this.totalPointsOriginal = this.totalPoints = totalPoints;
   }
 
   @action.bound
@@ -118,6 +125,11 @@ class Rewards {
   @action.bound
   onPointsSelect(value) {
     this.points = value;
+  }
+
+  @action.bound
+  onTotalPointsChange(event) {
+    this.totalPoints = event.target.value;
   }
 
   @action.bound
@@ -151,6 +163,7 @@ class Rewards {
     this.active = this.activeOriginal;
     this.benefits = this.benefitsOriginal;
     this.points = this.pointsOriginal;
+    this.totalPoints = this.totalPointsOriginal;
   }
 
   @action.bound
@@ -175,6 +188,8 @@ class Rewards {
     if (this.benefits !== this.benefitsOriginal) toUpdate.benefits = this.benefits;
 
     if (this.points !== this.pointsOriginal) toUpdate.points = this.points;
+
+    if (this.totalPoints !== this.totalPointsOriginal) toUpdate.totalPoints = this.totalPoints;
 
     let toDelete = this.rewardsOriginal.reduce((deleted, ro) => {
       let found = this.rewards.find(r => r._id === ro._id);

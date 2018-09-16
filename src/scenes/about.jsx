@@ -1,6 +1,6 @@
 import React from 'react'
 import hozain from '../images/hozain.jpeg'
-import podpis from '../images/podpis.jpeg'
+// import podpis from '../images/podpis.jpeg'
 
 export default class AboutScene extends React.Component {
     render() {
