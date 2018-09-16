@@ -9,7 +9,7 @@ const benefits = [
 
 export default ({ value, readOnly, onChange }) => {
   return (
-    <FormGroup>
+    <FormGroup controlId="selectPoints">
       <ControlLabel>Баллы</ControlLabel>
       <FormControl
         bsSize="sm"

@@ -4,7 +4,7 @@ import { FormGroup, ControlLabel, FormControl } from "react-bootstrap";
 export default ({ value, users, onChange }) => {
   users = users || [];
   return (
-    <FormGroup bsSize="small">
+    <FormGroup controlId="selectUser" bsSize="small">
       <ControlLabel>Выберите пользователя</ControlLabel>
       <FormControl
         bsSize="small"

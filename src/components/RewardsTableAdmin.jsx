@@ -5,6 +5,7 @@ import TableRow from "./Row";
 import SelectUser from "./SelectUser";
 import SelectPoints from "./SelectPoints";
 import RadioYesNo from "./RadioYesNo";
+import Points from "./Points";
 
 @inject("authCtrl", "rewardsCtrl")
 @observer
@@ -50,10 +51,10 @@ export default class extends Component {
           <RadioYesNo label="Льготы" value={benefits ? 1 : 0} onChange={onBenefitsToggle} />
         </Row>
 
-        {points && <SelectPoints value={points} onChange={onPointsSelect} />}
+        {points && <Points points={points} onPointsSelect={onPointsSelect} />}
 
         <h5>
-          Вознаграждение <strong>{computedResult}</strong>
+          Вознаграждение <strong>{computedResult} сомов</strong>
         </h5>
 
         <Table responsive striped bordered condensed>
