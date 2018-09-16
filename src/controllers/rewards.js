@@ -20,20 +20,13 @@ class Rewards {
   currentUserId;
 
   @observable
-  active;
-  activeOriginal;
-
-  @observable
-  benefits;
-  benefitsOriginal;
-
-  @observable
-  points;
-  pointsOriginal;
-
-  @observable
-  totalPoints;
-  totalPointsOriginal;
+  extraData = {
+    active: null,
+    benefits: null,
+    points: null,
+    totalPoints: null
+  };
+  extraDataOriginal;
 
   constructor() {
     this.reset();
@@ -50,10 +43,8 @@ class Rewards {
       rewards.sort((r1, r2) => r1.date < r2.date);
 
       this.rewards = rewards;
-      this.activeOriginal = this.active = active;
-      this.benefitsOriginal = this.benefits = benefits;
-      this.pointsOriginal = this.points = points;
-      this.totalPointsOriginal = this.totalPoints = totalPoints;
+      this.extraData = { active, benefits, points, totalPoints };
+      this.extraDataOriginal = { ...this.extraData };
       this.ready = true;
     }
   }
@@ -77,10 +68,7 @@ class Rewards {
     this.users = null;
     this.currentUserId = null;
     this.rewardsOriginal = this.rewards = [];
-    this.activeOriginal = this.active = null;
-    this.benefitsOriginal = this.benefits = null;
-    this.pointsOriginal = this.points = null;
-    this.totalPointsOriginal = this.totalPoints = null;
+    this.extraData = {};
     this.ready = false;
   }
 
@@ -100,10 +88,8 @@ class Rewards {
 
     this.rewards = rewards;
     this.rewardsOriginal = rewards.slice();
-    this.activeOriginal = this.active = active;
-    this.benefitsOriginal = this.benefits = benefits;
-    this.pointsOriginal = this.points = points;
-    this.totalPointsOriginal = this.totalPoints = totalPoints;
+    this.extraData = { active, benefits, points, totalPoints };
+    this.extraDataOriginal = { ...this.extraData };
   }
 
   @action.bound
@@ -114,22 +100,22 @@ class Rewards {
 
   @action.bound
   onActiveToggle() {
-    this.active = !this.active;
+    this.extraData.active = !this.extraData.active;
   }
 
   @action.bound
   onBenefitsToggle() {
-    this.benefits = !this.benefits;
+    this.extraData.benefits = !this.extraData.benefits;
   }
 
   @action.bound
   onPointsSelect(value) {
-    this.points = value;
+    this.extraData.points = value;
   }
 
   @action.bound
   onTotalPointsChange(event) {
-    this.totalPoints = event.target.value;
+    this.extraData.totalPoints = event.target.value;
   }
 
   @action.bound
@@ -160,10 +146,7 @@ class Rewards {
   @action.bound
   onCancelRewards() {
     this.rewards = (this.rewardsOriginal && this.rewardsOriginal.slice()) || [];
-    this.active = this.activeOriginal;
-    this.benefits = this.benefitsOriginal;
-    this.points = this.pointsOriginal;
-    this.totalPoints = this.totalPointsOriginal;
+    this.extraData = { ...this.extraDataOriginal };
   }
 
   @action.bound
@@ -183,13 +166,17 @@ class Rewards {
       return false;
     });
 
-    if (this.active !== this.activeOriginal) toUpdate.active = this.active;
+    if (this.extraData.active !== this.extraDataOriginal.active)
+      toUpdate.active = this.extraData.active;
 
-    if (this.benefits !== this.benefitsOriginal) toUpdate.benefits = this.benefits;
+    if (this.extraData.benefits !== this.extraDataOriginal.benefits)
+      toUpdate.benefits = this.extraData.benefits;
 
-    if (this.points !== this.pointsOriginal) toUpdate.points = this.points;
+    if (this.extraData.points !== this.extraDataOriginal.points)
+      toUpdate.points = this.extraData.points;
 
-    if (this.totalPoints !== this.totalPointsOriginal) toUpdate.totalPoints = this.totalPoints;
+    if (this.extraData.totalPoints !== this.extraDataOriginal.totalPoints)
+      toUpdate.totalPoints = this.extraData.totalPoints;
 
     let toDelete = this.rewardsOriginal.reduce((deleted, ro) => {
       let found = this.rewards.find(r => r._id === ro._id);

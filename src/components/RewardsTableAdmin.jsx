@@ -23,10 +23,7 @@ export default class extends Component {
       users,
       rewards,
       currentUserId,
-      active,
-      benefits,
-      totalPoints,
-      points,
+      extraData,
 
       onUserSelect,
       onTotalPointsChange,
@@ -40,6 +37,7 @@ export default class extends Component {
       onRowRemove,
       computedResult
     } = this.props.rewardsCtrl;
+    let { active, benefits, points, totalPoints } = extraData;
 
     if (!ready) return null;
 
