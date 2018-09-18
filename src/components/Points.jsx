@@ -5,11 +5,11 @@ import FieldGroup from "./FieldGroup";
 export default ({ totalPoints, onTotalPointsChange, points, onPointsSelect, readOnly }) => {
   return (
     <div>
-      <SelectPoints value={points} onChange={onPointsSelect} readOnly={readOnly}/>
+      <SelectPoints value={points} onChange={onPointsSelect} readOnly={readOnly} />
       <FieldGroup
         id="totalPoints"
         label="Общее количество баллов"
-        type="number"
+        type="text"
         value={totalPoints}
         onChange={onTotalPointsChange}
         readOnly={readOnly}
