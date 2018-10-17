@@ -12,9 +12,7 @@ export default class MarketingScene extends React.Component {
                                  style={{border: '3px solid #167CE9', borderRadius: '8px', margin: '10px 20px'}}
                                  width="400px" className="img-responsive"/>
                         </a>
-
                     </div>
-
                     <h1><u><i><strong>Прайс- Лист</strong></i></u></h1>
                     <table border="1" cellPadding="8" cellSpacing="0">
                         <tr>
